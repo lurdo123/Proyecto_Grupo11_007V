@@ -19,6 +19,16 @@
             "projectName": "inventario",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GarantiasApplication<garantias>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.garantias.GarantiasApplication",
+            "projectName": "garantias",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
