@@ -1,5 +1,8 @@
 package Gl1tch_st0re.autenticacion.controller;
 
+import Gl1tch_st0re.autenticacion.dto.request.actualizarUsuarioRequestDTO;
+import Gl1tch_st0re.autenticacion.dto.request.autenticacionRequestDTO;
+import jakarta.validation.Valid;
 import Gl1tch_st0re.autenticacion.dto.request.loginRequest;
 import Gl1tch_st0re.autenticacion.model.autenticacionModel;
 import Gl1tch_st0re.autenticacion.security.JwtService;
@@ -19,7 +22,7 @@ public class autenticacionController {
     @Autowired
     private autenticacionService autenticacionService;
 
-     @Autowired
+    @Autowired
     private JwtService jwtService;
 
     @GetMapping
@@ -52,5 +55,38 @@ public class autenticacionController {
     @GetMapping("/hash")
     public String generarHash(@RequestParam String texto) {
         return passwordEncoder.encode(texto);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizar(
+            @PathVariable Long id,
+            @Valid @RequestBody actualizarUsuarioRequestDTO dto) {
+
+        autenticacionModel usuarioActualizado = autenticacionService.actualizarUsuario(id, dto);
+        return ResponseEntity.ok(usuarioActualizado);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> crear(@Valid @RequestBody autenticacionRequestDTO dto) {
+        autenticacionModel creado = autenticacionService.crearUsuario(dto);
+        return ResponseEntity.status(201).body(creado);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Long id) {
+        autenticacionService.eliminarUsuario(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> eliminarTodos() {
+        autenticacionService.eliminarTodos();
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long id) {
+        autenticacionModel usuario = autenticacionService.obtenerPorId(id);
+        return ResponseEntity.ok(usuario);
     }
 }

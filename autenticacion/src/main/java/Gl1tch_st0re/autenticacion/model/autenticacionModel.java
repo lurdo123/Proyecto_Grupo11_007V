@@ -1,6 +1,7 @@
 package Gl1tch_st0re.autenticacion.model;
 
-
+import java.time.LocalDateTime;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,11 +14,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "autenticacion")
+@Table(name = "usuarios")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class autenticacionModel {
 
     @Id
@@ -29,4 +31,10 @@ public class autenticacionModel {
 
     @NotBlank(message = "La contraseña no puede estar vacía")
     private String password;
+
+    @NotBlank(message = "El correo no puede estar vacío")
+    private String correo;
+
+    @Column(name = "fecha_creacion", updatable = false)
+    private LocalDateTime fechaCreacion;
 }
