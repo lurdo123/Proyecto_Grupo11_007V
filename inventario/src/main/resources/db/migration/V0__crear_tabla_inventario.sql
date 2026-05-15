@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS inventario (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR(100) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
