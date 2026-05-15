@@ -17,14 +17,14 @@ import java.util.Map;
 
 public class autenticacionController {
     @Autowired
-    private autenticacionService autenticacionServicio;
+    private autenticacionService autenticacionService;
 
      @Autowired
     private JwtService jwtService;
 
     @GetMapping
     public ResponseEntity<List<autenticacionModel>> listar() {
-        List<autenticacionModel> autenticaciones = autenticacionServicio.findAll();
+        List<autenticacionModel> autenticaciones = autenticacionService.findAll();
         if (autenticaciones.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -34,7 +34,7 @@ public class autenticacionController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody loginRequest request) {
         // Busca el usuario en la BD
-        boolean credencialesValidas = autenticacionServicio.validarCredenciales(
+        boolean credencialesValidas = autenticacionService.validarCredenciales(
                 request.getUsuario(),
                 request.getPassword());
 
