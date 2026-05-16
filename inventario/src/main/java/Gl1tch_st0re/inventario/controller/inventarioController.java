@@ -1,13 +1,11 @@
 package Gl1tch_st0re.inventario.controller;
 
-import Gl1tch_st0re.inventario.dto.request.loginRequest;
+import Gl1tch_st0re.inventario.dto.request.inventarioRequestDTO;
 import Gl1tch_st0re.inventario.model.inventarioModel;
-import Gl1tch_st0re.inventario.security.JwtService;
 import Gl1tch_st0re.inventario.service.inventarioService;
-
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,49 +13,58 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/inventario")
-
 public class inventarioController {
 
     @Autowired
-    private inventarioService inventarioServicio;
-
-    @Autowired
-    private JwtService jwtService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private inventarioService inventarioService;
 
     @GetMapping
     public ResponseEntity<List<inventarioModel>> listar() {
-
-        List<inventarioModel> inventarios = inventarioServicio.findAll();
-
-        if (inventarios.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.ok(inventarios);
+        List<inventarioModel> lista = inventarioService.findAll();
+        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(lista);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody loginRequest request) {
-
-        boolean credencialesValidas = inventarioServicio.validarCredenciales(
-                request.getUsuario(),
-                request.getPassword());
-
-        if (!credencialesValidas) {
-            return ResponseEntity.status(401)
-                    .body(Map.of("error", "Credenciales inválidas"));
-        }
-
-        String token = jwtService.generarToken(request.getUsuario());
-
-        return ResponseEntity.ok(Map.of("token", token));
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(inventarioService.obtenerPorId(id));
     }
 
-    @GetMapping("/hash")
-    public String generarHash(@RequestParam String texto) {
-        return passwordEncoder.encode(texto);
+    @PostMapping
+    public ResponseEntity<?> crear(@Valid @RequestBody inventarioRequestDTO dto) {
+        inventarioModel creado = inventarioService.crear(dto);
+        return ResponseEntity.status(201).body(Map.of(
+                "mensaje", "Inventario creado correctamente",
+                "id", creado.getId(),
+                "productoId", creado.getProductoId(),
+                "estadoFisico", creado.getEstadoFisico(),
+                "cantidadDisponible", creado.getCantidadDisponible(),
+                "ubicacionBodega", creado.getUbicacionBodega()
+        ));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizar(@PathVariable Long id, @Valid @RequestBody inventarioRequestDTO dto) {
+        inventarioModel actualizado = inventarioService.actualizar(id, dto);
+        return ResponseEntity.ok(Map.of(
+                "mensaje", "Inventario con id " + id + " actualizado correctamente",
+                "id", actualizado.getId(),
+                "productoId", actualizado.getProductoId(),
+                "estadoFisico", actualizado.getEstadoFisico(),
+                "cantidadDisponible", actualizado.getCantidadDisponible(),
+                "ubicacionBodega", actualizado.getUbicacionBodega()
+        ));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Long id) {
+        String mensaje = inventarioService.eliminar(id);
+        return ResponseEntity.ok(Map.of("mensaje", mensaje));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> eliminarTodos() {
+        String mensaje = inventarioService.eliminarTodos();
+        return ResponseEntity.ok(Map.of("mensaje", mensaje));
     }
 }

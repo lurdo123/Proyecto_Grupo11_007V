@@ -1,15 +1,7 @@
 package Gl1tch_st0re.inventario.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "inventario")
@@ -23,9 +15,15 @@ public class inventarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El usuario no puede estar vacío")
-    private String usuario;
+    @Column(name = "producto_id")
+    private Long productoId;
 
-    @NotBlank(message = "La contraseña no puede estar vacía")
-    private String password;
+    @Column(name = "estado_fisico")
+    private String estadoFisico;
+
+    @Column(name = "cantidad_disponible")
+    private Integer cantidadDisponible;
+
+    @Column(name = "ubicacion_bodega")
+    private String ubicacionBodega;
 }
