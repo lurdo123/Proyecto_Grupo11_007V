@@ -20,6 +20,16 @@
             "projectName": "autenticacion",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ResenasApplication<resenas>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.resenas.ResenasApplication",
+            "projectName": "resenas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
