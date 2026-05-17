@@ -1,2 +1,2 @@
 INSERT INTO usuarios (usuario, correo, password)
-VALUES ('jonatan', 'jonatan@example.com', '$2a$10$M7GokuaJ6GGm0GX5r8P9HeYW9BfQXKwlEFtLd5ycj3QuAMse2FQBu');
+VALUES ('admin', 'admin@example.com', '$2a$10$gEPn6Bfu1h7ezDoXCgwIze/hzClg9InYfrkmDNjJvj50ZJj4unc/q');

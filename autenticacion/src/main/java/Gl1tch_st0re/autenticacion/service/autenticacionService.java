@@ -53,7 +53,9 @@ public class autenticacionService {
                 .correo(dto.getCorreo())
                 .build();
 
-        return autenticacionRepository.save(nuevoUsuario);
+        autenticacionRepository.save(nuevoUsuario);
+        autenticacionRepository.flush();
+        return autenticacionRepository.findById(nuevoUsuario.getId()).orElseThrow();
     }
 
     public void eliminarUsuario(Long id) {

@@ -1,5 +1,7 @@
 package Gl1tch_st0re.autenticacion.model;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import java.time.LocalDateTime;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,7 +21,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 public class autenticacionModel {
 
     @Id
@@ -35,6 +36,7 @@ public class autenticacionModel {
     @NotBlank(message = "El correo no puede estar vacío")
     private String correo;
 
-    @Column(name = "fecha_creacion", updatable = false)
+    @Generated(GenerationTime.INSERT)
+    @Column(name = "fecha_creacion", insertable = false, updatable = false)
     private LocalDateTime fechaCreacion;
 }
