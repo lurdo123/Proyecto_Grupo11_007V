@@ -1,5 +1,4 @@
-package Gl1tch_st0re.compatibilidad.security;
-
+package Gl1tch_st0re.ordenes.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -14,7 +13,7 @@ import java.util.Date;
 public class JwtService {
 
     private static final String SECRET_KEY = "gl1tch-st0re-clave-secreta-2026!!";
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hora
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60;
 
     private SecretKey getKey() {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
@@ -35,7 +34,6 @@ public class JwtService {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload();
-
         return claims.getSubject();
     }
 

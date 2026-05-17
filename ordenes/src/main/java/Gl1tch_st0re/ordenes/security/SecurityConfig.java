@@ -1,5 +1,4 @@
-package Gl1tch_st0re.compatibilidad.security;
-
+package Gl1tch_st0re.ordenes.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +24,6 @@ public class SecurityConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/autenticaciones/login").permitAll() // <-- corregido
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(
