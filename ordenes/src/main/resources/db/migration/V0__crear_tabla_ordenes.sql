@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS ordenes (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    usuario VARCHAR(100) NOT NULL,
+    producto VARCHAR(150) NOT NULL,
+    cantidad INT NOT NULL,
+    estado VARCHAR(50) NOT NULL DEFAULT 'PENDIENTE',
+    fecha_creacion DATETIME,
+    PRIMARY KEY (id)
+);

@@ -13,7 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "compatibilidades")
+@Table(name = "compatibilidad")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

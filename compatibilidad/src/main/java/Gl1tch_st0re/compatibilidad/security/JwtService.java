@@ -1,54 +1,50 @@
 package Gl1tch_st0re.compatibilidad.security;
 
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-
+import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
 
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
-import java.util.function.Function;
 
 @Service
-
 public class JwtService {
 
-    private static final String SECRET_KEY = "clave_secreta_gl1tch_store";
+    private static final String SECRET_KEY = "gl1tch-st0re-clave-secreta-2026!!";
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hora
 
-    // ✅ ESTE ES EL MÉTODO QUE TE FALTA
-    public String generateToken(String username) {
+    private SecretKey getKey() {
+        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
+    }
 
+    public String generarToken(String username) {
         return Jwts.builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .subject(username)
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .signWith(getKey())
                 .compact();
     }
 
-    public String extractUsername(String token) {
-        return extractClaim(token, Claims::getSubject);
+    public String obtenerUsername(String token) {
+        Claims claims = Jwts.parser()
+                .verifyWith(getKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
+
+        return claims.getSubject();
     }
 
-    public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
-
-        final Claims claims = extractAllClaims(token);
-
-        return claimsResolver.apply(claims);
-    }
-
-    private Claims extractAllClaims(String token) {
-
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
-                .parseClaimsJws(token)
-                .getBody();
-    }
-
-    public boolean validateToken(String token, String username) {
-
-        final String extractedUsername = extractUsername(token);
-
-        return extractedUsername.equals(username);
+    public boolean tokenValido(String token) {
+        try {
+            obtenerUsername(token);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

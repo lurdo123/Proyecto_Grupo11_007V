@@ -1,13 +1,11 @@
 package Gl1tch_st0re.compatibilidad.controlador;
 
 import Gl1tch_st0re.compatibilidad.dto.request.compatibilidadRequestDTO;
-import Gl1tch_st0re.compatibilidad.dto.request.loginRequest;
 import Gl1tch_st0re.compatibilidad.modelo.compatibilidadModelo;
-import Gl1tch_st0re.compatibilidad.security.JwtService;
 import Gl1tch_st0re.compatibilidad.servicio.compatibilidadServicio;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,56 +18,71 @@ public class compatibilidadControlador {
     @Autowired
     private compatibilidadServicio compatibilidadServicio;
 
-    @Autowired
-    private JwtService jwtService;
-
+    // GET /api/compatibilidades
     @GetMapping
     public ResponseEntity<List<compatibilidadModelo>> listar() {
-        List<compatibilidadModelo> compatibilidades = compatibilidadServicio.findAll();
-        if (compatibilidades.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(compatibilidades);
+        List<compatibilidadModelo> lista = compatibilidadServicio.findAll();
+        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        return ResponseEntity.ok(lista);
     }
 
-    @PostMapping("/verificar")
-    public ResponseEntity<?> verificar(@RequestBody compatibilidadRequestDTO request) {
-        // Valida la compatibilidad entre los componentes
-        boolean esCompatible = compatibilidadServicio.validarCompatibilidad(                request.getComponenteBase(),
-                request.getComponenteCompatible());
-
-        if (!esCompatible) {
-            return ResponseEntity.status(401).body(Map.of("error", "Los componentes no son compatibles"));
-        }
-
-        // Siguiendo tu estructura, generamos un token para la sesión de consulta
-        String token = jwtService.generateToken(request.getComponenteBase());
-        return ResponseEntity.ok(Map.of("token", token, "mensaje", "Compatibilidad confirmada"));
+    // GET /api/compatibilidades/{id}
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(compatibilidadServicio.findById(id));
     }
 
-    @PostMapping("/login")
-public ResponseEntity<?> login(@RequestBody loginRequest request) {
-
-    if(request.getUsuario().equals("vicente")
-       && request.getPassword().equals("1234")) {
-
-        String token = jwtService.generateToken(request.getUsuario());
-
-        return ResponseEntity.ok(Map.of(
-            "token", token,
-            "mensaje", "Login correcto"
+    // POST /api/compatibilidades
+    @PostMapping
+    public ResponseEntity<?> crear(@Valid @RequestBody compatibilidadRequestDTO dto) {
+        compatibilidadModelo creado = compatibilidadServicio.crear(dto);
+        return ResponseEntity.status(201).body(Map.of(
+                "mensaje", "Compatibilidad creada correctamente",
+                "id", creado.getId(),
+                "componenteBase", creado.getComponenteBase(),
+                "componenteCompatible", creado.getComponenteCompatible(),
+                "tipo", creado.getTipo()
         ));
     }
 
-    return ResponseEntity.status(401)
-            .body(Map.of("error", "Credenciales inválidas"));
-}
+    // PUT /api/compatibilidades/{id}
+    @PutMapping("/{id}")
+    public ResponseEntity<?> actualizar(@PathVariable Long id,
+                                        @Valid @RequestBody compatibilidadRequestDTO dto) {
+        compatibilidadModelo actualizado = compatibilidadServicio.actualizar(id, dto);
+        return ResponseEntity.ok(Map.of(
+                "mensaje", "Compatibilidad con id " + id + " actualizada correctamente",
+                "id", actualizado.getId(),
+                "componenteBase", actualizado.getComponenteBase(),
+                "componenteCompatible", actualizado.getComponenteCompatible(),
+                "tipo", actualizado.getTipo()
+        ));
+    }
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    // DELETE /api/compatibilidades/{id}
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> eliminar(@PathVariable Long id) {
+        String mensaje = compatibilidadServicio.eliminar(id);
+        return ResponseEntity.ok(Map.of("mensaje", mensaje));
+    }
 
-    @GetMapping("/hash")
-    public String generarHash(@RequestParam String texto) {
-        return passwordEncoder.encode(texto);
+    // DELETE /api/compatibilidades
+    @DeleteMapping
+    public ResponseEntity<?> eliminarTodos() {
+        String mensaje = compatibilidadServicio.eliminarTodos();
+        return ResponseEntity.ok(Map.of("mensaje", mensaje));
+    }
+
+    // GET /api/compatibilidades/verificar?componenteBase=X&componenteCompatible=Y
+    @GetMapping("/verificar")
+    public ResponseEntity<?> verificar(
+            @RequestParam String componenteBase,
+            @RequestParam String componenteCompatible) {
+        boolean compatible = compatibilidadServicio.verificarCompatibilidad(componenteBase, componenteCompatible);
+        return ResponseEntity.ok(Map.of(
+                "componenteBase", componenteBase,
+                "componenteCompatible", componenteCompatible,
+                "esCompatible", compatible
+        ));
     }
 }

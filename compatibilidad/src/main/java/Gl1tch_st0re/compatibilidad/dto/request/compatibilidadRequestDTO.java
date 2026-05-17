@@ -11,4 +11,7 @@ public class compatibilidadRequestDTO {
 
     @NotBlank(message = "El componente compatible no puede estar vacío")
     private String componenteCompatible;
+
+    @NotBlank(message = "El tipo no puede estar vacío")
+    private String tipo;
 }

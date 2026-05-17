@@ -9,5 +9,6 @@ import java.util.Optional;
 @Repository
 public interface compatibilidadRepositorio extends JpaRepository<compatibilidadModelo, Long> {
     Optional<compatibilidadModelo> findByComponenteBase(String componenteBase);
-
+    boolean existsByComponenteBaseAndComponenteCompatible(String componenteBase, String componenteCompatible);
+    boolean existsByComponenteBaseAndComponenteCompatibleAndIdNot(String componenteBase, String componenteCompatible, Long id);
 }

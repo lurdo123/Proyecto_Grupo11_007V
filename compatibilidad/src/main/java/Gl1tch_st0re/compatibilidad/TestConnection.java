@@ -15,7 +15,7 @@ public class TestConnection implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String result = jdbcTemplate.queryForObject("SELECT 'Conexión OK con MySQL :)' FROM dual", String.class);
+        String result = jdbcTemplate.queryForObject("SELECT 'Conexión OK  a MySQL con Compatibilidad :)' FROM dual", String.class);
         System.out.println(result);
     }
 }
