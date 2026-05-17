@@ -30,6 +30,36 @@
             "projectName": "resenas",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CatalogoApplication<catalogo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.catalogo.CatalogoApplication",
+            "projectName": "catalogo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GarantiasApplication<garantias>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.garantias.GarantiasApplication",
+            "projectName": "garantias",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PromocionesApplication<promociones>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.promociones.PromocionesApplication",
+            "projectName": "promociones",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
