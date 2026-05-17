@@ -60,6 +60,36 @@
             "projectName": "promociones",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-PagosApplication<pagos>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.pagos.PagosApplication",
+            "projectName": "pagos",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ClientesApplication<clientes>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.clientes.ClientesApplication",
+            "projectName": "clientes",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServicioClientesApplication<clientes>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.clientes.ServicioClientesApplication",
+            "projectName": "clientes",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
