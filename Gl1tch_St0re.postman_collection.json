@@ -1,0 +1,2751 @@
+{
+  "info": {
+    "_postman_id": "948ca6ec-25e1-4307-adf2-c83214bebd5a",
+    "name": "Gl1tch_St0re",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "39555946"
+  },
+  "item": [
+    {
+      "name": "Servicios Jonatan",
+      "item": [
+        {
+          "name": "Autenticacion",
+          "item": [
+            {
+              "name": "Listar autenticaciones",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2MDQ2MiwiZXhwIjoxNzc5MDY0MDYyfQ.D6N3XTj2CmT2BPTyRzRdpYm-aS3HUFFWKLQmn4sYLsg",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener autenticaciones por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc5MDU3MDQ0LCJleHAiOjE3NzkwNjA2NDR9.91XwWg_NBFYOK6HP1CrOa4fkOUINUTBhrHb-xzHgbxo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar autenticacion por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc5MDU3MDQ0LCJleHAiOjE3NzkwNjA2NDR9.91XwWg_NBFYOK6HP1CrOa4fkOUINUTBhrHb-xzHgbxo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"usuario\": \"williams\",\r\n    \"password\": \"contraseña\",\r\n    \"correo\": \"prueba@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar autenticacion por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc5MDU3MDQ0LCJleHAiOjE3NzkwNjA2NDR9.91XwWg_NBFYOK6HP1CrOa4fkOUINUTBhrHb-xzHgbxo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar todas las autenticaciones",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc5MDU3MDQ0LCJleHAiOjE3NzkwNjA2NDR9.91XwWg_NBFYOK6HP1CrOa4fkOUINUTBhrHb-xzHgbxo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear autenticacion",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc5MDU3MDQ0LCJleHAiOjE3NzkwNjA2NDR9.91XwWg_NBFYOK6HP1CrOa4fkOUINUTBhrHb-xzHgbxo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"usuario\": \"Jonatan\",\r\n    \"password\": \"password\",\r\n    \"correo\": \"prueba@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/autenticaciones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "autenticaciones"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Catalogo",
+          "item": [
+            {
+              "name": "Crear catalogo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"nombre catalogo\",\n  \"descripcion\": \"descripcion catalogo\",\n  \"precio\": 1200.00,\n  \"stock\": 15,\n  \"categoria\": \"Categoria catalogo\",\n  \"marca\": \"marca catalogo\",\n  \"disponible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar catalogo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener catalogo por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar catalogo por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nombre\": \"nombre catalogo cambio\",\n  \"descripcion\": \"descripcion catalogo\",\n  \"precio\": 1200.00,\n  \"stock\": 15,\n  \"categoria\": \"Categoria catalogo\",\n  \"marca\": \"marca catalogo\",\n  \"disponible\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar todas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg4NzM5LCJleHAiOjE3Nzg5OTIzMzl9.GfN7oKELaXfQjpZIKwVxPeIiLcgiojkEdtgzaHN6dQ4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8081/api/catalogo",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8081",
+                  "path": [
+                    "api",
+                    "catalogo"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Promociones",
+          "item": [
+            {
+              "name": "Crear promocion",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTgyMDYyLCJleHAiOjE3Nzg5ODU2NjJ9.GpwDpMisLGP-mJ7FF0r9v5myLKm0IPjqJV6ee5eCsO0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"codigo\": \"ar9008\",\n  \"descripcion\": 101,\n  \"descuentoPorcentaje\": 12,\n  \"fechaInicio\": \"2027-05-15\",\n  \"fechaFin\": \"2027-05-15\",\n  \"activo\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar promociones",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg1OTk4LCJleHAiOjE3Nzg5ODk1OTh9.K9H38cvnN1EVidstzjY08Hw_DRBkgyiFXgDadnvyJSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener promociones por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTgyMDYyLCJleHAiOjE3Nzg5ODU2NjJ9.GpwDpMisLGP-mJ7FF0r9v5myLKm0IPjqJV6ee5eCsO0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar promociones por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg1OTk4LCJleHAiOjE3Nzg5ODk1OTh9.K9H38cvnN1EVidstzjY08Hw_DRBkgyiFXgDadnvyJSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"codigo\": \"ar90\",\n  \"descripcion\": 101,\n  \"descuentoPorcentaje\": 12,\n  \"fechaInicio\": \"2027-05-15\",\n  \"fechaFin\": \"2027-05-15\",\n  \"activo\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg1OTk4LCJleHAiOjE3Nzg5ODk1OTh9.K9H38cvnN1EVidstzjY08Hw_DRBkgyiFXgDadnvyJSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar todas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTg1OTk4LCJleHAiOjE3Nzg5ODk1OTh9.K9H38cvnN1EVidstzjY08Hw_DRBkgyiFXgDadnvyJSY",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8090/api/promociones",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8090",
+                  "path": [
+                    "api",
+                    "promociones"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Garantias",
+          "item": [
+            {
+              "name": "Crear garantia",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTc4OTk2LCJleHAiOjE3Nzg5ODI1OTZ9.gWpXn9xahcWXFFvxuW-VrRmbhxtaA1MOIhYJuP0OqPo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productoId\": 1,\n  \"ordenId\": 101,\n  \"mesesCobertura\": 12,\n  \"fechaVencimiento\": \"2027-05-15\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar garantías",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTc4OTk2LCJleHAiOjE3Nzg5ODI1OTZ9.gWpXn9xahcWXFFvxuW-VrRmbhxtaA1MOIhYJuP0OqPo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener garantías por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTUyODUzLCJleHAiOjE3Nzg5NTY0NTN9.7tsx7894QbNU4sAW8mmOnQYtYwSbZo8ZwulRb2kSkU0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar garantías por ID Copy",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTUyODUzLCJleHAiOjE3Nzg5NTY0NTN9.7tsx7894QbNU4sAW8mmOnQYtYwSbZo8ZwulRb2kSkU0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"productoId\": 1,\n  \"ordenId\": 101,\n  \"mesesCobertura\": 36,\n  \"fechaVencimiento\": \"2029-05-15\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTUyODUzLCJleHAiOjE3Nzg5NTY0NTN9.7tsx7894QbNU4sAW8mmOnQYtYwSbZo8ZwulRb2kSkU0",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar todas las garantías",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKb25hdGFuIiwiaWF0IjoxNzc4OTc4OTk2LCJleHAiOjE3Nzg5ODI1OTZ9.gWpXn9xahcWXFFvxuW-VrRmbhxtaA1MOIhYJuP0OqPo",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8085/api/garantias",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8085",
+                  "path": [
+                    "api",
+                    "garantias"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicios Williams",
+      "item": [
+        {
+          "name": "Inventario",
+          "item": [
+            {
+              "name": "Listar Inventario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Inventario por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Inventario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productoId\": 19,\r\n  \"estadoFisico\": \"Nuevo\",\r\n  \"cantidadDisponible\": 75,\r\n  \"ubicacionBodega\": \"Bodega A\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Inventario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTE1MzEwLCJleHAiOjE3Nzg5MTg5MTB9.0gQ6AvAxfKJmuSnG3epwMIxojIUzhIZZ_Zm-zT4cXZc",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productoId\": 2,\r\n  \"estadoFisico\": \"Nuevo\",\r\n  \"cantidadDisponible\": 75,\r\n  \"ubicacionBodega\": \"Bodega A\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Inventario por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar TODOS Inventario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTExNTQ2LCJleHAiOjE3Nzg5MTUxNDZ9.C-k8p2FdT2lr_een3vxMdie7qdInMSw61ECeHoHcnfk",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8086/api/inventario",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8086",
+                  "path": [
+                    "api",
+                    "inventario"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Resenas",
+          "item": [
+            {
+              "name": "Listar Reseñas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Reseñas por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas/8",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas",
+                    "8"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Reseñas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODM4LCJleHAiOjE3NzkwNTY0Mzh9.0wE6LywUIQrc7MauJQFjDH78yaUgN4UgDsU7TdpyKwI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productoId\": 9,\r\n  \"usuarioId\": 79,\r\n  \"calificacion\": 5,\r\n  \"comentario\": \"Excelente producto :O\",\r\n  \"esCompraVerificada\": false,\r\n  \"fechaPublicacion\": \"2026-02-10\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Reseña",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTczNDI3LCJleHAiOjE3Nzg5NzcwMjd9.pdcddC_KcwxiiFSkwCI6y0q_nIGazhTpVjaYN7BuUrI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"productoId\": 6,\r\n  \"usuarioId\": 6,\r\n  \"calificacion\": 2,\r\n  \"comentario\": \"Excelente producto >:O\",\r\n  \"esCompraVerificada\": false,\r\n  \"fechaPublicacion\": \"2026-02-10\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas/6",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas",
+                    "6"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Reseña por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTczNDI3LCJleHAiOjE3Nzg5NzcwMjd9.pdcddC_KcwxiiFSkwCI6y0q_nIGazhTpVjaYN7BuUrI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas/7",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas",
+                    "7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Todas Las Reseñas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTczNDI3LCJleHAiOjE3Nzg5NzcwMjd9.pdcddC_KcwxiiFSkwCI6y0q_nIGazhTpVjaYN7BuUrI",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8091/api/resenas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8091",
+                  "path": [
+                    "api",
+                    "resenas"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Pagos",
+          "item": [
+            {
+              "name": "Listar Pagos",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Pagos por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Pagos",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ordenId\": 22,\r\n  \"idTransaccionExterna\": \"TXN-006-2006\",\r\n  \"metodoPago\": \"EFECTIVO\",\r\n  \"montoPagado\": 220000.00,\r\n  \"estadoPago\": \"PENDIENTE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Pagos",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ordenId\": 22,\r\n  \"idTransaccionExterna\": \"WWW-006-2022\",\r\n  \"metodoPago\": \"EFECTIVO\",\r\n  \"montoPagado\": 220000.00,\r\n  \"estadoPago\": \"PENDIENTE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Pagos por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Todos los Pagos",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDM4NjA0LCJleHAiOjE3NzkwNDIyMDR9.ExIZFfnB-0dBaqPQ9mEkW3vynV3ldQMJjz3suj3Gum8",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8088/api/pagos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8088",
+                  "path": [
+                    "api",
+                    "pagos"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Clientes",
+          "item": [
+            {
+              "name": "Listar Clientes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Obtener Clientes Por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Crear Clientes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuarioId\": 6,\r\n  \"nombre\": \"Luis Pay\",\r\n  \"apellido\": \"Fernández\",\r\n  \"telefono\": \"+56944444444\",\r\n  \"nivelFidelidad\": \"Bronce\",\r\n  \"totalCompradoHistorico\": 0.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar Clientes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuarioId\": 1,\r\n  \"nombre\": \"Juan Melano\",\r\n  \"apellido\": \"Pérez\",\r\n  \"telefono\": \"+56912345678\",\r\n  \"nivelFidelidad\": \"Oro\",\r\n  \"totalCompradoHistorico\": 2000000.00\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Clientes por ID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Eliminar Tods Los  Clientes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc3OTA2NTM2OSwiZXhwIjoxNzc5MDY4OTY5fQ.a5WVUWL7I1v-TMBo9iUBAorQz3DWi4h_4CfjOMGpDi4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8082/api/clientes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8082",
+                  "path": [
+                    "api",
+                    "clientes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Servicios Vicente",
+      "item": [
+        {
+          "name": "Compatibilidad",
+          "item": [
+            {
+              "name": "CrearCompatibilidad",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"componenteBase\": \"RTX 3060 TI\",\r\n  \"componenteCompatible\": \"Ryzen 7 5800X\",\r\n  \"tipo\": \"GPU-CPU\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ActualizarCompatibilidad",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc4OTg1NDU0LCJleHAiOjE3Nzg5ODkwNTR9.Y1k_azbwMP4NPMzQxwvq4Ri6NYaL-duDQzjDUkxG1oA",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"componenteBase\": \"RTX 3060\",\r\n  \"componenteCompatible\": \"Ryzen 5 5800X\",\r\n  \"tipo\": \"GPU-CPU\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "CompatibilidadPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxMDY5LCJleHAiOjE3NzkwNTQ2Njl9.UyUNsh8CSEHWew8atC0VGlLfI3l1As84PzIWkprm57A",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Listar Compatibilidad",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarTodas",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/api/compatibilidades",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "compatibilidades"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Preventas",
+          "item": [
+            {
+              "name": "ListaTodos",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ObtenerPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PorUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas/usuario/willito",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas",
+                    "usuario",
+                    "willito"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PorEstado",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas/estado/RESERVADO",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas",
+                    "estado",
+                    "RESERVADO"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "CrearPreventa",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuario\": \"willito\",\r\n  \"producto\": \"RTX 5090 Ti\",\r\n  \"cantidad\": 1,\r\n  \"estado\": \"RESERVADO\",\r\n  \"fechaLanzamiento\": \"2026-09-01T00:00:00\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Actualizar",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuario\": \"jonatan\",\r\n  \"producto\": \"RTX 5090 Ti\",\r\n  \"cantidad\": 2,\r\n  \"estado\": \"CONFIRMADO\",\r\n  \"fechaLanzamiento\": \"2026-09-15T00:00:00\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarTodo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8089/api/preventas",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8089",
+                  "path": [
+                    "api",
+                    "preventas"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Envios",
+          "item": [
+            {
+              "name": "ListarTodo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ObtenerPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PorUsuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/usuario/jonatan",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "usuario",
+                    "jonatan"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PorEstado",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/estado/PENDIENTE",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "estado",
+                    "PENDIENTE"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PorOrden",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/orden/5",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "orden",
+                    "5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "CrearEnvio",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUxNzEyLCJleHAiOjE3NzkwNTUzMTJ9.8Slvc_9t7vhQjoNeDYszGNR1gm1UrUSuPU4B88lJ6T4",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ordenId\": 5,\r\n  \"usuario\": \"jonatan\",\r\n  \"direccion\": \"Av. Providencia 1234, Santiago\",\r\n  \"estado\": \"PENDIENTE\",\r\n  \"transportista\": \"Chilexpress\",\r\n  \"fechaEntregaEstimada\": \"2026-05-30T12:00:00\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8084/api/envios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ActualizarEnvio",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"ordenId\": 1,\r\n  \"usuario\": \"jonatan\",\r\n  \"direccion\": \"Av. Providencia 1234, Santiago\",\r\n  \"estado\": \"EN_CAMINO\",\r\n  \"transportista\": \"Starken\",\r\n  \"fechaEntregaEstimada\": \"2026-05-28T10:00:00\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarTodo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8084/api/envios",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8084",
+                  "path": [
+                    "api",
+                    "envios"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Ordenes",
+          "item": [
+            {
+              "name": "ListaTodasOrdenes",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "OrdenPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "OrdenPorUSer",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes/usuario/a",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes",
+                    "usuario",
+                    "a"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "OrdenPorEstado",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes/estado/PENDIENTE",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes",
+                    "estado",
+                    "PENDIENTE"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "CrearOrden",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuario\": \"a\",\r\n  \"producto\": \"RTX 4080\",\r\n  \"cantidad\": 1,\r\n  \"estado\": \"PENDIENTE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "ActualizarOrden",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"usuario\": \"jonatan\",\r\n  \"producto\": \"RTX 4080\",\r\n  \"cantidad\": 2,\r\n  \"estado\": \"COMPLETADO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarPorID",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "EliminarTodo",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb25hdGFuIiwiaWF0IjoxNzc5MDUyODI2LCJleHAiOjE3NzkwNTY0MjZ9.QIc5x7xVkvTLVbJ1hUJ-nPVar8wrGfVJjr8ARJGOZ7s",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8087/api/ordenes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8087",
+                  "path": [
+                    "api",
+                    "ordenes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"usuario\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/autenticaciones/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "autenticaciones",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
