@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "948ca6ec-25e1-4307-adf2-c83214bebd5a",
+    "_postman_id": "56bbcd3c-ac5b-4934-b97c-8ee1fe4fd413",
     "name": "Gl1tch_St0re",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_exporter_id": "39555946"
@@ -2742,6 +2742,33 @@
             "api",
             "autenticaciones",
             "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Hash",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/autenticaciones/hash?texto=prueba",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "autenticaciones",
+            "hash"
+          ],
+          "query": [
+            {
+              "key": "texto",
+              "value": "prueba"
+            }
           ]
         }
       },
