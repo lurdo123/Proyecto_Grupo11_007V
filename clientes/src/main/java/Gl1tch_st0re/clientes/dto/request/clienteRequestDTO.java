@@ -4,7 +4,7 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Data
-public class perfilClienteRequestDTO {
+public class clienteRequestDTO {
 
     @NotNull(message = "El usuario_id es obligatorio")
     private Long usuarioId;

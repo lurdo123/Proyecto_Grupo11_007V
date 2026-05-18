@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ServicioClientesApplication {
+public class ClientesApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ServicioClientesApplication.class, args);
+        SpringApplication.run(ClientesApplication.class, args);
     }
 }

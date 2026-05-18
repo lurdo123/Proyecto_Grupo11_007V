@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class perfilClienteResponseDTO {
+public class clienteResponseDTO {
     private Long id;
     private Long usuarioId;
     private String nombre;
