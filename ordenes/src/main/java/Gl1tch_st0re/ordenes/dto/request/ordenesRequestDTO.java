@@ -11,8 +11,8 @@ public class ordenesRequestDTO {
     @NotBlank(message = "El usuario es obligatorio")
     private String usuario;
 
-    @NotBlank(message = "El producto es obligatorio")
-    private String producto;
+    @NotNull(message = "El productoId es obligatorio")
+    private Long productoId;
 
     @NotNull(message = "La cantidad es obligatoria")
     @Min(value = 1, message = "La cantidad debe ser al menos 1")

@@ -1,5 +1,6 @@
 package Gl1tch_st0re.envios.controlador;
 
+import jakarta.servlet.http.HttpServletRequest;
 import Gl1tch_st0re.envios.dto.request.enviosRequestDTO;
 import Gl1tch_st0re.envios.modelo.enviosModelo;
 import Gl1tch_st0re.envios.servicio.enviosServicio;
@@ -22,7 +23,8 @@ public class enviosControlador {
     @GetMapping
     public ResponseEntity<List<enviosModelo>> listar() {
         List<enviosModelo> lista = enviosServicio.findAll();
-        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        if (lista.isEmpty())
+            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(lista);
     }
 
@@ -52,8 +54,10 @@ public class enviosControlador {
 
     // POST /api/envios
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody enviosRequestDTO dto) {
-        enviosModelo creado = enviosServicio.crear(dto);
+    public ResponseEntity<?> crear(@Valid @RequestBody enviosRequestDTO dto,
+            HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        enviosModelo creado = enviosServicio.crear(dto, token);
         return ResponseEntity.status(201).body(Map.of(
                 "mensaje", "Envío creado correctamente",
                 "id", creado.getId(),
@@ -63,14 +67,13 @@ public class enviosControlador {
                 "estado", creado.getEstado(),
                 "transportista", creado.getTransportista(),
                 "fechaEnvio", creado.getFechaEnvio().toString(),
-                "fechaEntregaEstimada", creado.getFechaEntregaEstimada().toString()
-        ));
+                "fechaEntregaEstimada", creado.getFechaEntregaEstimada().toString()));
     }
 
     // PUT /api/envios/{id}
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizar(@PathVariable Long id,
-                                        @Valid @RequestBody enviosRequestDTO dto) {
+            @Valid @RequestBody enviosRequestDTO dto) {
         enviosModelo actualizado = enviosServicio.actualizar(id, dto);
         return ResponseEntity.ok(Map.of(
                 "mensaje", "Envío con id " + id + " actualizado correctamente",
@@ -81,8 +84,7 @@ public class enviosControlador {
                 "estado", actualizado.getEstado(),
                 "transportista", actualizado.getTransportista(),
                 "fechaEnvio", actualizado.getFechaEnvio().toString(),
-                "fechaEntregaEstimada", actualizado.getFechaEntregaEstimada().toString()
-        ));
+                "fechaEntregaEstimada", actualizado.getFechaEntregaEstimada().toString()));
     }
 
     // DELETE /api/envios/{id}

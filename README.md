@@ -11,7 +11,7 @@ Sistema de e-commerce especializado en componentes y hardware computacional, con
 |--------|--------|
 | Jonatan Parra | @jonatanparra |
 | Williams Rivera | @WilliamsG22 |
-| Vicente Azocar| @lurdo123 |
+| Vicente Azocar | @lurdo123 |
 
 ---
 
@@ -63,7 +63,8 @@ src/main/java/Gl1tch_st0re/<microservicio>/
 ├── model/           → Entidades JPA
 ├── dto/
 │   ├── request/     → DTOs de entrada con validaciones Bean Validation
-│   └── response/    → DTOs de salida
+│   └── response/    → DTOs de salida y DTOs para consumo remoto
+├── client/          → WebClients para comunicación entre microservicios
 ├── exceptions/      → Excepciones personalizadas y GlobalExceptionHandler
 └── security/        → Filtro JWT, JwtService y SecurityConfig
 ```
@@ -91,7 +92,7 @@ Endpoints adicionales específicos por dominio:
 
 ### Validaciones con Bean Validation (JSR 380)
 
-Los DTOs de request utilizan anotaciones como `@NotNull`, `@NotBlank`, `@Min`, `@Max`, `@PositiveOrZero`, con mensajes descriptivos en español. El controlador recibe `@Valid` para activar la validación antes de llegar a la capa de servicio.
+Los DTOs de request utilizan anotaciones como `@NotNull`, `@NotBlank`, `@Min`, `@Max`, `@Positive`, con mensajes descriptivos en español. El controlador recibe `@Valid` para activar la validación antes de llegar a la capa de servicio.
 
 ### Manejo de excepciones centralizado con `@RestControllerAdvice`
 
@@ -100,19 +101,45 @@ Cada microservicio implementa un `GlobalExceptionHandler` que captura:
 - `MethodArgumentNotValidException` → HTTP 400 con detalle de campos inválidos
 - `Exception` genérica → HTTP 500
 
-Las respuestas de error siguen un formato estructurado con `ErrorResponse` (código, tipo, mensaje).
+Las respuestas de error siguen un formato estructurado con `ErrorResponse` (timestamp, status, error, mensaje, ruta).
 
 ### Reglas de negocio en la capa de servicio
 
 Ejemplos implementados:
 - `clientes`: validación de unicidad de `usuario_id` al crear y actualizar; asignación automática de nivel `"Bronce"` si no se especifica
 - `ordenes` y `preventas`: normalización del campo estado a `toUpperCase()` antes de persistir
-- `resenas`: calificación restringida entre 1 y 5 mediante Bean Validation
+- `resenas`: calificación restringida entre 1 y 5 mediante Bean Validation; unicidad de reseña por usuario y producto
 - `compatibilidad`: lógica de verificación de compatibilidad entre componentes por nombre
+- `pagos`: validación de unicidad de `id_transaccion_externa`
+- `inventario`: validación de unicidad de `producto_id`
+
+### Comunicación entre microservicios con WebClient
+
+Se implementaron 6 flujos de comunicación entre microservicios utilizando **WebClient** de Spring WebFlux:
+
+| Servicio origen | Consulta a | Cuándo | Puerto destino |
+|----------------|-----------|--------|----------------|
+| `ordenes` | `catalogo` | Al crear una orden, valida que el producto existe, está disponible y tiene stock suficiente | 8081 |
+| `pagos` | `ordenes` | Al registrar un pago, valida que la orden referenciada existe | 8087 |
+| `envios` | `ordenes` | Al crear un envío, valida que la orden referenciada existe | 8087 |
+| `garantias` | `catalogo` | Al crear una garantía, valida que el producto existe | 8081 |
+| `resenas` | `catalogo` | Al crear una reseña, valida que el producto existe | 8081 |
+| `inventario` | `catalogo` | Al registrar inventario, valida que el producto existe | 8081 |
+
+Cada cliente está implementado en el paquete `client/` de su respectivo microservicio con manejo de errores y timeout implícito.
+
+### Logs estructurados con SLF4J
+
+Todos los microservicios implementan `@Slf4j` de Lombok en la capa de servicio con mensajes en puntos clave del flujo:
+- `log.info(...)` en operaciones exitosas (listado, creación, actualización, eliminación)
+- `log.warn(...)` en validaciones de negocio y registros no encontrados
+- `log.error(...)` en fallos de comunicación entre microservicios
+
+Los mensajes incluyen el prefijo `[nombre_servicio]` para facilitar la trazabilidad en consola.
 
 ### Seguridad JWT
 
-Los microservicios incluyen `JwtAuthenticationFilter`, `JwtService` y `SecurityConfig` para proteger endpoints con autenticación basada en tokens.
+Los microservicios incluyen `JwtAuthenticationFilter`, `JwtService` y `SecurityConfig` para proteger endpoints con autenticación basada en tokens. El endpoint `/api/autenticaciones/login` es público; el resto requiere token válido en el header `Authorization: Bearer <token>`.
 
 ### Colección Postman
 
@@ -122,7 +149,7 @@ Se incluye el archivo `Gl1tch_St0re.postman_collection.json` en la raíz del rep
 
 ## Requisitos previos
 
-- Java 17 o superior
+- Java 21
 - Maven 3.8+
 - MySQL 8 (o Docker)
 
@@ -160,6 +187,8 @@ Repetir para cada microservicio (`catalogo`, `clientes`, `compatibilidad`, `envi
 cd <nombre-microservicio>
 ./mvnw spring-boot:run
 ```
+
+> **Orden recomendado de inicio:** `autenticacion` → `catalogo` → resto de servicios. Los microservicios que consumen `catalogo` u `ordenes` via WebClient requieren que esos servicios estén corriendo primero.
 
 ---
 

@@ -1,5 +1,6 @@
 package Gl1tch_st0re.inventario.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import Gl1tch_st0re.inventario.dto.request.inventarioRequestDTO;
 import Gl1tch_st0re.inventario.model.inventarioModel;
 import Gl1tch_st0re.inventario.service.inventarioService;
@@ -21,7 +22,8 @@ public class inventarioController {
     @GetMapping
     public ResponseEntity<List<inventarioModel>> listar() {
         List<inventarioModel> lista = inventarioService.findAll();
-        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        if (lista.isEmpty())
+            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(lista);
     }
 
@@ -31,16 +33,17 @@ public class inventarioController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody inventarioRequestDTO dto) {
-        inventarioModel creado = inventarioService.crear(dto);
+    public ResponseEntity<?> crear(@Valid @RequestBody inventarioRequestDTO dto,
+            HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        inventarioModel creado = inventarioService.crear(dto, token);
         return ResponseEntity.status(201).body(Map.of(
                 "mensaje", "Inventario creado correctamente",
                 "id", creado.getId(),
                 "productoId", creado.getProductoId(),
                 "estadoFisico", creado.getEstadoFisico(),
                 "cantidadDisponible", creado.getCantidadDisponible(),
-                "ubicacionBodega", creado.getUbicacionBodega()
-        ));
+                "ubicacionBodega", creado.getUbicacionBodega()));
     }
 
     @PutMapping("/{id}")
@@ -52,8 +55,7 @@ public class inventarioController {
                 "productoId", actualizado.getProductoId(),
                 "estadoFisico", actualizado.getEstadoFisico(),
                 "cantidadDisponible", actualizado.getCantidadDisponible(),
-                "ubicacionBodega", actualizado.getUbicacionBodega()
-        ));
+                "ubicacionBodega", actualizado.getUbicacionBodega()));
     }
 
     @DeleteMapping("/{id}")

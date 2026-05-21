@@ -1,5 +1,6 @@
 package Gl1tch_st0re.resenas.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import Gl1tch_st0re.resenas.dto.request.resenaRequestDTO;
 import Gl1tch_st0re.resenas.model.resenaModel;
 import Gl1tch_st0re.resenas.service.resenaService;
@@ -21,7 +22,8 @@ public class resenaController {
     @GetMapping
     public ResponseEntity<List<resenaModel>> listar() {
         List<resenaModel> lista = resenaService.findAll();
-        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        if (lista.isEmpty())
+            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(lista);
     }
 
@@ -31,8 +33,10 @@ public class resenaController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody resenaRequestDTO dto) {
-        resenaModel creada = resenaService.crear(dto);
+    public ResponseEntity<?> crear(@Valid @RequestBody resenaRequestDTO dto,
+            HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        resenaModel creada = resenaService.crear(dto, token);
         return ResponseEntity.status(201).body(Map.of(
                 "mensaje", "Resena creada correctamente",
                 "id", creada.getId(),
@@ -41,8 +45,7 @@ public class resenaController {
                 "calificacion", creada.getCalificacion(),
                 "comentario", creada.getComentario(),
                 "esCompraVerificada", creada.getEsCompraVerificada(),
-                "fechaPublicacion", creada.getFechaPublicacion().toString()
-        ));
+                "fechaPublicacion", creada.getFechaPublicacion().toString()));
     }
 
     @PutMapping("/{id}")
@@ -56,8 +59,7 @@ public class resenaController {
                 "calificacion", actualizada.getCalificacion(),
                 "comentario", actualizada.getComentario(),
                 "esCompraVerificada", actualizada.getEsCompraVerificada(),
-                "fechaPublicacion", actualizada.getFechaPublicacion().toString()
-        ));
+                "fechaPublicacion", actualizada.getFechaPublicacion().toString()));
     }
 
     @DeleteMapping("/{id}")

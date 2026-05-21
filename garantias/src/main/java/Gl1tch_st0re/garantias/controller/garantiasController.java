@@ -1,5 +1,6 @@
 package Gl1tch_st0re.garantias.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import Gl1tch_st0re.garantias.dto.request.garantiasRequestDTO;
 import Gl1tch_st0re.garantias.model.garantiasModel;
 import Gl1tch_st0re.garantias.service.garantiasService;
@@ -32,8 +33,10 @@ public class garantiasController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody garantiasRequestDTO dto) {
-        return ResponseEntity.status(201).body(garantiasService.crear(dto));
+    public ResponseEntity<?> crear(@Valid @RequestBody garantiasRequestDTO dto,
+            HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        return ResponseEntity.status(201).body(garantiasService.crear(dto, token));
     }
 
     @PutMapping("/{id}")

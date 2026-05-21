@@ -1,5 +1,6 @@
 package Gl1tch_st0re.pagos.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import Gl1tch_st0re.pagos.dto.request.pagoRequestDTO;
 import Gl1tch_st0re.pagos.model.pagoModel;
 import Gl1tch_st0re.pagos.service.pagoService;
@@ -21,7 +22,8 @@ public class pagoController {
     @GetMapping
     public ResponseEntity<List<pagoModel>> listar() {
         List<pagoModel> lista = pagoService.findAll();
-        if (lista.isEmpty()) return ResponseEntity.noContent().build();
+        if (lista.isEmpty())
+            return ResponseEntity.noContent().build();
         return ResponseEntity.ok(lista);
     }
 
@@ -31,8 +33,10 @@ public class pagoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> crear(@Valid @RequestBody pagoRequestDTO dto) {
-        pagoModel creado = pagoService.crear(dto);
+    public ResponseEntity<?> crear(@Valid @RequestBody pagoRequestDTO dto,
+            HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        pagoModel creado = pagoService.crear(dto, token);
         return ResponseEntity.status(201).body(Map.of(
                 "mensaje", "Pago creado correctamente",
                 "id", creado.getId(),
@@ -40,8 +44,7 @@ public class pagoController {
                 "idTransaccionExterna", creado.getIdTransaccionExterna(),
                 "metodoPago", creado.getMetodoPago(),
                 "montoPagado", creado.getMontoPagado(),
-                "estadoPago", creado.getEstadoPago()
-        ));
+                "estadoPago", creado.getEstadoPago()));
     }
 
     @PutMapping("/{id}")
@@ -54,8 +57,7 @@ public class pagoController {
                 "idTransaccionExterna", actualizado.getIdTransaccionExterna(),
                 "metodoPago", actualizado.getMetodoPago(),
                 "montoPagado", actualizado.getMontoPagado(),
-                "estadoPago", actualizado.getEstadoPago()
-        ));
+                "estadoPago", actualizado.getEstadoPago()));
     }
 
     @DeleteMapping("/{id}")
