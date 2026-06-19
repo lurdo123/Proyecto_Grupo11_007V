@@ -1,0 +1,171 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: gl1tch-gateway
+
+  cloud:
+    gateway:
+      # Configuración global: CORS para que el front pueda consumir desde el gateway
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+
+      # Rutas hacia los 12 microservicios
+      routes:
+
+        # ── Autenticación (puerto 8080) ──────────────────────────────────────
+        - id: autenticacion
+          uri: http://localhost:8080
+          predicates:
+            - Path=/api/autenticaciones/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: autenticacion
+                fallbackUri: forward:/fallback/autenticacion
+
+        # ── Catálogo (puerto 8081) ───────────────────────────────────────────
+        - id: catalogo
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/catalogo/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: catalogo
+                fallbackUri: forward:/fallback/catalogo
+
+        # ── Clientes (puerto 8082) ───────────────────────────────────────────
+        - id: clientes
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/clientes/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: clientes
+                fallbackUri: forward:/fallback/clientes
+
+        # ── Compatibilidad (puerto 8083) ─────────────────────────────────────
+        - id: compatibilidad
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/compatibilidades/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: compatibilidad
+                fallbackUri: forward:/fallback/compatibilidad
+
+        # ── Envíos (puerto 8084) ─────────────────────────────────────────────
+        - id: envios
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/envios/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: envios
+                fallbackUri: forward:/fallback/envios
+
+        # ── Garantías (puerto 8085) ──────────────────────────────────────────
+        - id: garantias
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/garantias/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: garantias
+                fallbackUri: forward:/fallback/garantias
+
+        # ── Inventario (puerto 8086) ─────────────────────────────────────────
+        - id: inventario
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/inventario/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: inventario
+                fallbackUri: forward:/fallback/inventario
+
+        # ── Órdenes (puerto 8087) ────────────────────────────────────────────
+        - id: ordenes
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/ordenes/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: ordenes
+                fallbackUri: forward:/fallback/ordenes
+
+        # ── Pagos (puerto 8088) ──────────────────────────────────────────────
+        - id: pagos
+          uri: http://localhost:8088
+          predicates:
+            - Path=/api/pagos/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: pagos
+                fallbackUri: forward:/fallback/pagos
+
+        # ── Preventas (puerto 8089) ──────────────────────────────────────────
+        - id: preventas
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/preventas/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: preventas
+                fallbackUri: forward:/fallback/preventas
+
+        # ── Promociones (puerto 8090) ────────────────────────────────────────
+        - id: promociones
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/promociones/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: promociones
+                fallbackUri: forward:/fallback/promociones
+
+        # ── Reseñas (puerto 8091) ────────────────────────────────────────────
+        - id: resenas
+          uri: http://localhost:8091
+          predicates:
+            - Path=/api/resenas/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: resenas
+                fallbackUri: forward:/fallback/resenas
+
+# Actuator: exponer endpoints de salud para monitoreo
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, gateway
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    Gl1tch_st0re.gateway: INFO
