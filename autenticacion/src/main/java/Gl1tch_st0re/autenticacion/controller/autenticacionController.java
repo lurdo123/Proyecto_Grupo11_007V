@@ -9,6 +9,8 @@ import Gl1tch_st0re.autenticacion.security.JwtService;
 import Gl1tch_st0re.autenticacion.service.autenticacionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,20 +27,29 @@ import java.util.Map;
 @Tag(name = "Autenticación", description = "Registro de usuarios, login y generación de tokens JWT")
 public class autenticacionController {
 
-    @Autowired
-    private autenticacionService autenticacionService;
+    private final autenticacionService autenticacionService;
 
-    @Autowired
-    private JwtService jwtService;
+    private final JwtService jwtService;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public autenticacionController(autenticacionService autenticacionService,
+                                   JwtService jwtService,
+                                   PasswordEncoder passwordEncoder) {
+        this.autenticacionService = autenticacionService;
+        this.jwtService = jwtService;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Operation(summary = "Listar usuarios", description = "Retorna todos los usuarios registrados")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de usuarios"),
+            @ApiResponse(responseCode = "200", description = "Lista de usuarios",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"id\":1,\"usuario\":\"admin\",\"correo\":\"admin@example.com\",\"fechaCreacion\":\"2026-01-01T00:00:00\"}"))),
             @ApiResponse(responseCode = "204", description = "Sin usuarios registrados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -52,8 +63,12 @@ public class autenticacionController {
 
     @Operation(summary = "Login", description = "Valida credenciales y retorna un token JWT")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Login exitoso, retorna token JWT"),
-            @ApiResponse(responseCode = "401", description = "Credenciales inválidas")
+            @ApiResponse(responseCode = "200", description = "Login exitoso, retorna token JWT",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"token\":\"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiJ9.FirmaJWT\"}"))),
+            @ApiResponse(responseCode = "401", description = "Credenciales inválidas",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody loginRequest request) {
@@ -70,7 +85,9 @@ public class autenticacionController {
     }
 
     @Operation(summary = "Generar hash", description = "Genera el hash BCrypt de un texto (uso interno/testing)")
-    @ApiResponse(responseCode = "200", description = "Hash generado exitosamente")
+    @ApiResponse(responseCode = "200", description = "Hash generado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"id\":1,\"usuario\":\"admin\",\"correo\":\"admin@example.com\",\"fechaCreacion\":\"2026-01-01T00:00:00\"}")))
     @GetMapping("/hash")
     public String generarHash(@RequestParam String texto) {
         return passwordEncoder.encode(texto);
@@ -78,9 +95,15 @@ public class autenticacionController {
 
     @Operation(summary = "Obtener usuario por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Usuario encontrado"),
-            @ApiResponse(responseCode = "404", description = "Usuario no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Usuario encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"id\":1,\"usuario\":\"admin\",\"correo\":\"admin@example.com\",\"fechaCreacion\":\"2026-01-01T00:00:00\"}"))),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -91,9 +114,15 @@ public class autenticacionController {
 
     @Operation(summary = "Crear usuario", description = "Registra un nuevo usuario con contraseña encriptada")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Usuario creado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"mensaje\":\"Usuario creado correctamente\",\"id\":1,\"usuario\":\"admin\",\"correo\":\"admin@example.com\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -104,10 +133,18 @@ public class autenticacionController {
 
     @Operation(summary = "Actualizar usuario", description = "Modifica usuario y re-encripta la contraseña")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "404", description = "Usuario no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Usuario actualizado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"id\":1,\"usuario\":\"admin\",\"correo\":\"admin@example.com\",\"fechaCreacion\":\"2026-01-01T00:00:00\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -121,8 +158,12 @@ public class autenticacionController {
     @Operation(summary = "Eliminar usuario por ID")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Usuario eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Usuario no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "404", description = "Usuario no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -134,7 +175,9 @@ public class autenticacionController {
     @Operation(summary = "Eliminar todos los usuarios")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Todos los usuarios eliminados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping

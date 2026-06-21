@@ -35,10 +35,16 @@
     </dependencyManagement>
 
     <dependencies>
-        <!-- Spring Cloud Gateway (incluye WebFlux) -->
+        <!-- Spring Cloud Gateway -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
+            <artifactId>spring-cloud-starter-gateway-server-webflux</artifactId>
+        </dependency>
+
+        <!-- Circuit Breaker con Resilience4J (necesario para el filtro CircuitBreaker en rutas) -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
         </dependency>
 
         <!-- Actuator para health checks -->

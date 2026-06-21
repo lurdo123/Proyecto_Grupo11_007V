@@ -6,6 +6,8 @@ import Gl1tch_st0re.ordenes.modelo.ordenesModelo;
 import Gl1tch_st0re.ordenes.servicio.ordenesServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,9 +29,13 @@ public class ordenesControlador {
 
     @Operation(summary = "Listar órdenes")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de órdenes"),
+            @ApiResponse(responseCode = "200", description = "Lista de órdenes",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
             @ApiResponse(responseCode = "204", description = "Sin órdenes registradas"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -42,9 +48,15 @@ public class ordenesControlador {
 
     @Operation(summary = "Obtener orden por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Orden encontrada"),
-            @ApiResponse(responseCode = "404", description = "Orden no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Orden encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Orden no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -54,9 +66,15 @@ public class ordenesControlador {
 
     @Operation(summary = "Listar órdenes por usuario")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Órdenes del usuario"),
-            @ApiResponse(responseCode = "404", description = "Usuario sin órdenes"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Órdenes del usuario",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Usuario sin órdenes",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/usuario/{usuario}")
@@ -66,9 +84,15 @@ public class ordenesControlador {
 
     @Operation(summary = "Listar órdenes por estado", description = "El estado se normaliza a mayúsculas (PENDIENTE, ENVIADA, ENTREGADA, CANCELADA)")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Órdenes con el estado indicado"),
-            @ApiResponse(responseCode = "404", description = "Sin órdenes con ese estado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Órdenes con el estado indicado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Sin órdenes con ese estado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/estado/{estado}")
@@ -78,10 +102,18 @@ public class ordenesControlador {
 
     @Operation(summary = "Crear orden", description = "Crea una orden validando disponibilidad y stock en catálogo. Requiere header Authorization")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Orden creada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos, producto no disponible o stock insuficiente"),
-            @ApiResponse(responseCode = "404", description = "Producto no encontrado en catálogo"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Orden creada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"mensaje\":\"Orden creada correctamente\",\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos, producto no disponible o stock insuficiente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado en catálogo",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -101,10 +133,18 @@ public class ordenesControlador {
 
     @Operation(summary = "Actualizar orden")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Orden actualizada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "404", description = "Orden no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Orden actualizada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Orden no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -123,9 +163,15 @@ public class ordenesControlador {
 
     @Operation(summary = "Eliminar orden por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Orden eliminada exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Orden no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Orden eliminada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Orden no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -136,8 +182,12 @@ public class ordenesControlador {
 
     @Operation(summary = "Eliminar todas las órdenes")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Todas las órdenes eliminadas"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Todas las órdenes eliminadas",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"usuario\":\"jonatan\",\"producto\":\"RTX 4080\",\"cantidad\":1,\"estado\":\"PENDIENTE\",\"fechaCreacion\":\"2026-06-20T22:00:00\"}]"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping

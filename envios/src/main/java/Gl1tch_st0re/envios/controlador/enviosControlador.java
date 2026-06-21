@@ -6,6 +6,8 @@ import Gl1tch_st0re.envios.modelo.enviosModelo;
 import Gl1tch_st0re.envios.servicio.enviosServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,9 +29,13 @@ public class enviosControlador {
 
     @Operation(summary = "Listar envíos")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de envíos"),
+            @ApiResponse(responseCode = "200", description = "Lista de envíos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
             @ApiResponse(responseCode = "204", description = "Sin envíos registrados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -42,9 +48,15 @@ public class enviosControlador {
 
     @Operation(summary = "Obtener envío por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envío encontrado"),
-            @ApiResponse(responseCode = "404", description = "Envío no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envío encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Envío no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -54,9 +66,15 @@ public class enviosControlador {
 
     @Operation(summary = "Listar envíos por usuario")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envíos del usuario"),
-            @ApiResponse(responseCode = "404", description = "Usuario sin envíos"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envíos del usuario",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Usuario sin envíos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/usuario/{usuario}")
@@ -66,9 +84,15 @@ public class enviosControlador {
 
     @Operation(summary = "Listar envíos por estado", description = "El estado se normaliza a mayúsculas (PENDIENTE, EN_TRANSITO, ENTREGADO)")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envíos con el estado indicado"),
-            @ApiResponse(responseCode = "404", description = "Sin envíos con ese estado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envíos con el estado indicado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Sin envíos con ese estado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/estado/{estado}")
@@ -78,9 +102,15 @@ public class enviosControlador {
 
     @Operation(summary = "Listar envíos por orden")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envíos asociados a la orden"),
-            @ApiResponse(responseCode = "404", description = "Orden sin envíos asociados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envíos asociados a la orden",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Orden sin envíos asociados",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/orden/{ordenId}")
@@ -90,10 +120,18 @@ public class enviosControlador {
 
     @Operation(summary = "Crear envío", description = "Crea un envío validando que la orden exista en el microservicio de órdenes. Requiere header Authorization con token JWT")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Envío creado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "404", description = "Orden no encontrada en el servicio de órdenes"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Envío creado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"mensaje\":\"Envío creado correctamente\",\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Orden no encontrada en el servicio de órdenes",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -115,10 +153,18 @@ public class enviosControlador {
 
     @Operation(summary = "Actualizar envío")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envío actualizado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "404", description = "Envío no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envío actualizado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Envío no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -139,9 +185,15 @@ public class enviosControlador {
 
     @Operation(summary = "Eliminar envío por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Envío eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Envío no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Envío eliminado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Envío no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -152,8 +204,12 @@ public class enviosControlador {
 
     @Operation(summary = "Eliminar todos los envíos")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Todos los envíos eliminados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Todos los envíos eliminados",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"ordenId\":5,\"usuario\":\"jonatan\",\"direccion\":\"Av. Providencia 1234, Santiago\",\"estado\":\"PENDIENTE\",\"transportista\":\"Chilexpress\",\"fechaEnvio\":\"2026-06-20T22:00:00\",\"fechaEntregaEstimada\":\"2026-06-25T00:00:00\"}]"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping

@@ -5,6 +5,8 @@ import Gl1tch_st0re.promociones.model.promocionesModel;
 import Gl1tch_st0re.promociones.service.promocionesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -25,9 +27,13 @@ public class promocionesController {
 
     @Operation(summary = "Listar promociones")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de promociones"),
+            @ApiResponse(responseCode = "200", description = "Lista de promociones",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"nombre\":\"DESCUENTO10\",\"descripcion\":\"10% off en GPU\",\"descuento\":10.0,\"fechaInicio\":\"2026-06-01\",\"fechaFin\":\"2026-06-30\"}]"))),
             @ApiResponse(responseCode = "204", description = "Sin promociones registradas"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -41,9 +47,15 @@ public class promocionesController {
 
     @Operation(summary = "Obtener promoción por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Promoción encontrada"),
-            @ApiResponse(responseCode = "404", description = "Promoción no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Promoción encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"nombre\":\"DESCUENTO10\",\"descripcion\":\"10% off en GPU\",\"descuento\":10.0,\"fechaInicio\":\"2026-06-01\",\"fechaFin\":\"2026-06-30\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Promoción no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -53,9 +65,15 @@ public class promocionesController {
 
     @Operation(summary = "Crear promoción")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Promoción creada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Promoción creada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"id\":1,\"nombre\":\"DESCUENTO10\",\"descripcion\":\"10% off en GPU\",\"descuento\":10.0,\"fechaInicio\":\"2026-06-01\",\"fechaFin\":\"2026-06-30\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -65,10 +83,18 @@ public class promocionesController {
 
     @Operation(summary = "Actualizar promoción")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Promoción actualizada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos"),
-            @ApiResponse(responseCode = "404", description = "Promoción no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Promoción actualizada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"nombre\":\"DESCUENTO10\",\"descripcion\":\"10% off en GPU\",\"descuento\":10.0,\"fechaInicio\":\"2026-06-01\",\"fechaFin\":\"2026-06-30\"}]"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Promoción no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -79,8 +105,12 @@ public class promocionesController {
     @Operation(summary = "Eliminar promoción por ID")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Promoción eliminada exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Promoción no encontrada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "404", description = "Promoción no encontrada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -92,7 +122,9 @@ public class promocionesController {
     @Operation(summary = "Eliminar todas las promociones")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Todas las promociones eliminadas"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping

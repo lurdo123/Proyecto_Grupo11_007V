@@ -5,6 +5,8 @@ import Gl1tch_st0re.compatibilidad.modelo.compatibilidadModelo;
 import Gl1tch_st0re.compatibilidad.servicio.compatibilidadServicio;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -26,9 +28,13 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Listar compatibilidades")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de compatibilidades"),
+            @ApiResponse(responseCode = "200", description = "Lista de compatibilidades",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
             @ApiResponse(responseCode = "204", description = "Sin registros"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -40,9 +46,15 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Obtener compatibilidad por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Registro encontrado"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Registro encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -52,9 +64,15 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Crear compatibilidad", description = "Registra una nueva pareja componenteBase/componenteCompatible. La pareja debe ser única")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Compatibilidad creada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos o pareja duplicada"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Compatibilidad creada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"mensaje\":\"Compatibilidad creada correctamente\",\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos o pareja duplicada",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -71,10 +89,18 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Actualizar compatibilidad")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Compatibilidad actualizada exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos o pareja duplicada en otro registro"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Compatibilidad actualizada exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos o pareja duplicada en otro registro",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -92,9 +118,15 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Eliminar compatibilidad por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Registro eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Registro eliminado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -105,8 +137,12 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Eliminar todos los registros de compatibilidad")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Todos los registros eliminados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Todos los registros eliminados",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping
@@ -117,8 +153,12 @@ public class compatibilidadControlador {
 
     @Operation(summary = "Verificar compatibilidad", description = "Consulta si dos componentes son compatibles entre sí")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Resultado de la verificación (esCompatible: true/false)"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Resultado de la verificación (esCompatible: true/false)",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"componenteBase\":\"RTX 4080\",\"componenteCompatible\":\"PCIe 4.0\",\"tipo\":\"SLOT\"}]"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/verificar")

@@ -192,9 +192,80 @@ cd <nombre-microservicio>
 
 ---
 
+## API Gateway
+
+El módulo `gateway` centraliza todas las rutas bajo el puerto **8000**. Incluye Circuit Breaker con fallback automático y configuración CORS global.
+
+Para iniciarlo:
+
+```bash
+cd gateway
+./mvnw spring-boot:run
+```
+
+### Rutas principales del Gateway
+
+| Microservicio | Ruta en Gateway | Puerto destino |
+|---------------|----------------|----------------|
+| Autenticación | `http://localhost:8000/api/autenticaciones/**` | 8080 |
+| Catálogo | `http://localhost:8000/api/catalogo/**` | 8081 |
+| Clientes | `http://localhost:8000/api/clientes/**` | 8082 |
+| Compatibilidad | `http://localhost:8000/api/compatibilidades/**` | 8083 |
+| Envíos | `http://localhost:8000/api/envios/**` | 8084 |
+| Garantías | `http://localhost:8000/api/garantias/**` | 8085 |
+| Inventario | `http://localhost:8000/api/inventario/**` | 8086 |
+| Órdenes | `http://localhost:8000/api/ordenes/**` | 8087 |
+| Pagos | `http://localhost:8000/api/pagos/**` | 8088 |
+| Preventas | `http://localhost:8000/api/preventas/**` | 8089 |
+| Promociones | `http://localhost:8000/api/promociones/**` | 8090 |
+| Reseñas | `http://localhost:8000/api/resenas/**` | 8091 |
+
+Si un microservicio no responde, el Gateway retorna `HTTP 503` con un JSON descriptivo gracias al Circuit Breaker configurado.
+
+---
+
+## Documentación Swagger / OpenAPI
+
+Cada microservicio expone su documentación interactiva en `/swagger-ui/index.html`. Incluye autenticación JWT Bearer y descripción de todos los endpoints.
+
+| Microservicio | Swagger UI local |
+|---------------|-----------------|
+| Autenticación | http://localhost:8080/swagger-ui/index.html |
+| Catálogo | http://localhost:8081/swagger-ui/index.html |
+| Clientes | http://localhost:8082/swagger-ui/index.html |
+| Compatibilidad | http://localhost:8083/swagger-ui/index.html |
+| Envíos | http://localhost:8084/swagger-ui/index.html |
+| Garantías | http://localhost:8085/swagger-ui/index.html |
+| Inventario | http://localhost:8086/swagger-ui/index.html |
+| Órdenes | http://localhost:8087/swagger-ui/index.html |
+| Pagos | http://localhost:8088/swagger-ui/index.html |
+| Preventas | http://localhost:8089/swagger-ui/index.html |
+| Promociones | http://localhost:8090/swagger-ui/index.html |
+| Reseñas | http://localhost:8091/swagger-ui/index.html |
+
+La especificación OpenAPI en formato JSON está disponible en `/v3/api-docs` de cada servicio.
+
+---
+
+## Pruebas unitarias
+
+Todos los microservicios tienen pruebas unitarias en `src/test/java/` que cubren la capa de servicio utilizando **JUnit 5** y **Mockito** (sin cargar contexto Spring). Se sigue la estructura Given–When–Then.
+
+Para ejecutar las pruebas con reporte de cobertura:
+
+```bash
+cd <nombre-microservicio>
+./mvnw test
+```
+
+El reporte de cobertura JaCoCo se genera en `target/site/jacoco/index.html`.
+
+---
+
 ## Resumen de puertos
 
 ```
+gateway        → localhost:8000
 autenticacion  → localhost:8080
 catalogo       → localhost:8081
 clientes       → localhost:8082

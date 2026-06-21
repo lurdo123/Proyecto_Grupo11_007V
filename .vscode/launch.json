@@ -19,7 +19,8 @@
             "mainClass": "Gl1tch_st0re.autenticacion.AutenticacionApplication",
             "projectName": "autenticacion",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=41375 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=autenticacion"
         },
         {
             "type": "java",
@@ -132,6 +133,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "Gl1tch_st0re.preventas.PreventasApplication",
             "projectName": "preventas",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayApplication<gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "Gl1tch_st0re.gateway.GatewayApplication",
+            "projectName": "gateway",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

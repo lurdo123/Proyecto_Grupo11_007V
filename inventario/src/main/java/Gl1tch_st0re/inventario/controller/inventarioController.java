@@ -6,6 +6,8 @@ import Gl1tch_st0re.inventario.model.inventarioModel;
 import Gl1tch_st0re.inventario.service.inventarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -27,9 +29,13 @@ public class inventarioController {
 
     @Operation(summary = "Listar registros de inventario")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Lista de registros de inventario"),
+            @ApiResponse(responseCode = "200", description = "Lista de registros de inventario",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}]"))),
             @ApiResponse(responseCode = "204", description = "Sin registros"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping
@@ -42,9 +48,15 @@ public class inventarioController {
 
     @Operation(summary = "Obtener registro de inventario por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Registro encontrado"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Registro encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @GetMapping("/{id}")
@@ -54,10 +66,18 @@ public class inventarioController {
 
     @Operation(summary = "Crear registro de inventario", description = "Crea un registro verificando que el producto exista en catálogo y no tenga inventario previo. Requiere header Authorization")
     @ApiResponses({
-            @ApiResponse(responseCode = "201", description = "Inventario creado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos o producto ya tiene inventario"),
-            @ApiResponse(responseCode = "404", description = "Producto no encontrado en catálogo"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "201", description = "Inventario creado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"mensaje\":\"Inventario creado correctamente\",\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos o producto ya tiene inventario",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Producto no encontrado en catálogo",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PostMapping
@@ -76,10 +96,18 @@ public class inventarioController {
 
     @Operation(summary = "Actualizar registro de inventario")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Inventario actualizado exitosamente"),
-            @ApiResponse(responseCode = "400", description = "Datos inválidos o productoId duplicado en otro registro"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Inventario actualizado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}]"))),
+            @ApiResponse(responseCode = "400", description = "Datos inválidos o productoId duplicado en otro registro",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":400,\"error\":\"Bad Request\",\"mensaje\":\"El campo requerido no puede estar vacío\",\"ruta\":\"/api/recurso\"}"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @PutMapping("/{id}")
@@ -96,9 +124,15 @@ public class inventarioController {
 
     @Operation(summary = "Eliminar registro de inventario por ID")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Registro eliminado exitosamente"),
-            @ApiResponse(responseCode = "404", description = "Registro no encontrado"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Registro eliminado exitosamente",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}]"))),
+            @ApiResponse(responseCode = "404", description = "Registro no encontrado",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":404,\"error\":\"Not Found\",\"mensaje\":\"Recurso con id 99 no encontrado\",\"ruta\":\"/api/recurso/99\"}"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping("/{id}")
@@ -109,8 +143,12 @@ public class inventarioController {
 
     @Operation(summary = "Eliminar todos los registros de inventario")
     @ApiResponses({
-            @ApiResponse(responseCode = "200", description = "Todos los registros eliminados"),
-            @ApiResponse(responseCode = "401", description = "Token JWT requerido")
+            @ApiResponse(responseCode = "200", description = "Todos los registros eliminados",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "[{\"id\":1,\"productoId\":1,\"estadoFisico\":\"NUEVO\",\"cantidadDisponible\":10,\"ubicacionBodega\":\"A-01\"}]"))),
+            @ApiResponse(responseCode = "401", description = "Token JWT requerido",
+                    content = @Content(mediaType = "application/json",
+                            examples = @ExampleObject(value = "{\"fecha\":\"2026-06-20T22:00:00\",\"status\":401,\"error\":\"Unauthorized\",\"mensaje\":\"Token JWT inválido o no proporcionado\",\"ruta\":\"/api/recurso\"}")))
     })
     @SecurityRequirement(name = "bearerAuth")
     @DeleteMapping
