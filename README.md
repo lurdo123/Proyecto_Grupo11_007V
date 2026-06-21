@@ -207,18 +207,18 @@ cd gateway
 
 | Microservicio | Ruta en Gateway | Puerto destino |
 |---------------|----------------|----------------|
-| Autenticación | `http://localhost:8000/api/autenticaciones/**` | 8080 |
-| Catálogo | `http://localhost:8000/api/catalogo/**` | 8081 |
-| Clientes | `http://localhost:8000/api/clientes/**` | 8082 |
-| Compatibilidad | `http://localhost:8000/api/compatibilidades/**` | 8083 |
-| Envíos | `http://localhost:8000/api/envios/**` | 8084 |
-| Garantías | `http://localhost:8000/api/garantias/**` | 8085 |
-| Inventario | `http://localhost:8000/api/inventario/**` | 8086 |
-| Órdenes | `http://localhost:8000/api/ordenes/**` | 8087 |
-| Pagos | `http://localhost:8000/api/pagos/**` | 8088 |
-| Preventas | `http://localhost:8000/api/preventas/**` | 8089 |
-| Promociones | `http://localhost:8000/api/promociones/**` | 8090 |
-| Reseñas | `http://localhost:8000/api/resenas/**` | 8091 |
+| Autenticación | `http://localhost:8000/api/autenticaciones/` | 8080 |
+| Catálogo | `http://localhost:8000/api/catalogo/` | 8081 |
+| Clientes | `http://localhost:8000/api/clientes/` | 8082 |
+| Compatibilidad | `http://localhost:8000/api/compatibilidades/` | 8083 |
+| Envíos | `http://localhost:8000/api/envios/` | 8084 |
+| Garantías | `http://localhost:8000/api/garantias/` | 8085 |
+| Inventario | `http://localhost:8000/api/inventario/` | 8086 |
+| Órdenes | `http://localhost:8000/api/ordenes/` | 8087 |
+| Pagos | `http://localhost:8000/api/pagos/` | 8088 |
+| Preventas | `http://localhost:8000/api/preventas/` | 8089 |
+| Promociones | `http://localhost:8000/api/promociones/` | 8090 |
+| Reseñas | `http://localhost:8000/api/resenas/` | 8091 |
 
 Si un microservicio no responde, el Gateway retorna `HTTP 503` con un JSON descriptivo gracias al Circuit Breaker configurado.
 
