@@ -64,7 +64,7 @@ src/main/java/Gl1tch_st0re/<microservicio>/
 ├── dto/
 │   ├── request/     → DTOs de entrada con validaciones Bean Validation
 │   └── response/    → DTOs de salida y DTOs para consumo remoto
-├── client/          → WebClients para comunicación entre microservicios
+├── client/          → WebClients para comunicación entre microservicios (solo en: envios, garantias, inventario, ordenes, pagos, resenas)
 ├── exceptions/      → Excepciones personalizadas y GlobalExceptionHandler
 └── security/        → Filtro JWT, JwtService y SecurityConfig
 ```
@@ -221,6 +221,32 @@ cd gateway
 | Reseñas | `http://localhost:8000/api/resenas/**` | 8091 |
 
 Si un microservicio no responde, el Gateway retorna `HTTP 503` con un JSON descriptivo gracias al Circuit Breaker configurado.
+
+### Perfiles de configuración del Gateway
+
+El Gateway soporta tres perfiles Spring:
+
+| Perfil | Uso | Nivel de log |
+|--------|-----|-------------|
+| *(default)* | Desarrollo local | `DEBUG` para gateway |
+| `dev` | Desarrollo local explícito | `DEBUG` para gateway y aplicación |
+| `prod` | Producción (servicios remotos) | `WARN` para gateway, `INFO` para aplicación |
+
+Para activar un perfil:
+```bash
+cd gateway
+./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
+```
+
+### Monitoreo con Spring Boot Actuator
+
+El Gateway expone todos los endpoints de Actuator para monitoreo de salud:
+
+```
+GET http://localhost:8000/actuator/health     → Estado de salud con detalle
+GET http://localhost:8000/actuator/gateway    → Rutas activas del Gateway
+GET http://localhost:8000/actuator/*          → Todos los endpoints disponibles
+```
 
 ---
 
